@@ -42,7 +42,7 @@ if __name__ == "__main__":
 	print("[+] Checking Details...")
 
 	try:
-		vendor_name = mac_details(mac_address)
-		print("[+] vendor is "+vendor_name, "and the MAC is"+mac_address)
+		company_name = mac_details(mac_address)
+		print("[+] vendor is "+company_name, "and the MAC is"+mac_address)
 	except:
 		print("[!] An error occured.")
