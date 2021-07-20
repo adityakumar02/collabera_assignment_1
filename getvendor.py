@@ -8,26 +8,26 @@ print("[*] Welcome")
 
 def get_arguments():
 
-	# This will give user a neat CLI
+
 	parser = argparse.ArgumentParser()
 
-	# We need the MAC address
+	# Adding Argument
 	parser.add_argument("-m", "--macaddress",
                      dest="mac_address",
                      help="44:38:39:ff:ef:57"
                      )
 	options = parser.parse_args()
 
-	# Check if address was given
+	
 	if options.mac_address:
 		return options.mac_address
 	else:
 		parser.error("[!] Invalid Syntax. ")
 
 
-def get_mac_details(mac_address):
+def mac_details(mac_address):
 
-	# We will use an API to get the vendor details
+	# This is the api that i have got from macaddress.io
 	url = "https://api.macaddress.io/v1?apiKey=at_DI1LSWjj7x0H4iBuzlVzyjYhC5wys&output=json&search=44:38:39:ff:ef:57"
 
 	# Use get method to fetch details
@@ -37,15 +37,12 @@ def get_mac_details(mac_address):
 	return response.content.decode()
 
 
-# Driver Code
 if __name__ == "__main__":
 	mac_address = get_arguments()
 	print("[+] Checking Details...")
 
 	try:
-		vendor_name = get_mac_details(mac_address)
+		vendor_name = mac_details(mac_address)
 		print("[+] vendor is "+vendor_name, "and the MAC is"+mac_address)
 	except:
-
-		# Incase something goes wrong
 		print("[!] An error occured.")
